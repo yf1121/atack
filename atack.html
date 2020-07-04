@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<meta http-equiv="content-type" charset="utf-8">
+<html>
+    <head>
+        <title>JavaScriptでアタック25</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="atack.js"></script>
+        <style type="text/css">
+            #field td {
+                border: 1px solid black;
+                width: 50px;
+                height: 50px;
+                background-color: green;
+                text-align: center;
+                vertical-align: middle;
+                table-layout: fixed;
+                padding: 1px 1px 1px 1px;
+                font-size: 33px;
+            }
+            #color td {
+                border: 1px solid black;
+                width: 50px;
+                height: 50px;
+                background-color: green;
+                text-align: center;
+                vertical-align: middle;
+                table-layout: fixed;
+                padding: 1px 1px 1px 1px;
+                font-size: 33px;
+            }
+            #input {
+                border: 0px solid black;
+                width: 280px;
+                height: 26px;
+                text-align: center;
+                padding: 1px 1px 1px 1px;
+                font-size: 22px;
+            }
+            #time {
+                text-align: left;
+                padding: 1px 1px 1px 200px;
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>JavaScriptでアタック25</h2>
+        <!-- 盤面 -->
+        <table id="field"></table>
+        <!-- ターンの表示 -->
+        <p id="view_tarn"></p>
+       <input id="input" type="text" value="色を選択してください" size="10" readonly>
+        <!-- 初期化ボタン -->
+        <!-- 現在のパネルの数 -->
+        <h5>現在のパネルの状況</h5>
+        <table id="color"></table>
+        <button id="none" onclick="change_none()">色の選択解除</button>
+        <button id="undo" onclick="undo()">1つ前の状態に戻す</button>
+        <p id="time">開始前</p>
+        <hr />
+        <h3>使い方</h3>
+        <ol>
+            <li>現在のパネルの状況から正解した色を選択する。</li>
+            <li>選択できるパネルの番号の色が変わるので、色のついた番号のパネルを選択する。</li>
+            <li>残り5枚になっている場合にパネルをとったときに、アタックチャンスとなる。
+                <br />アタックチャンスは、今後の展開に有利だと思うパネルを1枚自由に消すことができる。
+                <br />アタックチャンスとなったパネル（黄色）は誰でも取ることができる。</li>
+            <li>最も多くのパネルを獲得した色が優勝になる。</li>
+        </ol>
+        <br />
+        <h3>その他の機能</h3>
+        <ul>
+            <li>色の選択を解除したい場合は「色の選択解除」をクリックする。</li>
+            <li>誤ってパネルを選択した場合は「1つ前の状態に戻す」をクリックすると直前のパネルの状態に戻すことができる。</li>
+            <li>リセットしたい場合は下の「最初からやり直す」をクリックすると、画面とセーブデータが初期化される。
+                <br /><br /><font color="red">注意！</font>　<button id="init_button" onclick="init()">最初からやり直す</button>
+            </li>
+        </ul>
+        <br />
+        <h3>スクリプトについて</h3>
+        <p>このプログラムのソースコードはJavaScriptとjQueryを用いて書かれている。</p>
+        <br />
+        <h3>ルール</h3>
+        <p><a href="https://www.asahi.co.jp/attack25/rule/">
+            アタック25公式ルール（朝日放送の番組公式ページでのルール紹介に飛びます🔗）</a>
+        </p>
+    </body>
+</html>
